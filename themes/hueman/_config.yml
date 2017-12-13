@@ -12,7 +12,7 @@ customize:
         height: 60
         url: images/logo-header.png
     theme_color: '#006bde'
-    highlight: androidstudio
+    highlight: agate
     sidebar: right # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
