@@ -2,14 +2,14 @@
 title: Fixing common mistakes
 tags:
   - git
-thumbnail: ../../../../images/git-logo.png
+thumbnail: ../../../../images/git/git-logo.png
 categories:
   - Git
 date: 2018-01-04 16:25:06
 ---
 
 
-![](../../../../images/git-logo.png)
+![](../../../../images/git/git-logo.png)
 
 이번 포스팅은 git을 하면서 사소한 실수를 했을때 대처하는 방법에 대해서 정리해보겠습니다.
 우선 git 연습을 하기 위한 빈 디렉토리와 파일을 만들고 커밋을 진행해주세요.
