@@ -136,4 +136,83 @@ strongSoldier.shout(); // HELLO, SIR
 * <code>setPrototypeOf</code>을 이용하여 두번째 파라미터에 <code>person</code> 객체를 전달해주었습니다. 각 객체마다 공유되는 공통 메서드이기 때문입니다.
 * <code>strongSoldier</code> 객체에 프로토타입을 설정해주지 않으면 <code>shout</code> 함수안에 있는 <code>this</code>는 <code>greet</code>이라는 속성을 가지고 있지 않기 때문에 에러가 발생하게 됩니다.
 
+### # The 'new' keyword
 
+자바스크립트에서 **new** 키워드가 함수에 적용되었을 때 어떻게 작동되는지 살펴보겠습니다.
+
+``` javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.introduce = function() {
+  console.log('My name is ' + this.name + '. I\'m ' + this.age);
+}
+
+// new 키워드의 역할
+function create(ctor) {
+  // 1. 빈 Object 생성
+  let obj = {}; 
+
+  // 2. prototype 설정
+  Object.setPrototypeOf(obj, ctor.prototype);
+
+  // 3. this 키워드는 생성자 함수를 가리키도록 설정
+  ctor.apply(obj, [...arguments].slice(1)); // ... 전개연산자(spread operator) es6 syntax
+
+  // 4. 가공된 object 리턴
+  return obj;
+}
+
+let jason = create(Person, 'Jason', 32);
+let jane = new Person('Jane', 28);
+
+jason.introduce(); // My name is Jason I'm 32
+jane.introduce(); // My name is Jane I'm 32
+```
+
+* **new**의 역할 : <code>create</code>함수와 동일
+  1. 빈 *object*를 생성합니다.
+  2. *prototype*을 설정해줍니다.
+  3. *this* 키워드가 constructor 함수를 가리키도록 합니다.
+  4. 생성한 *object*를 return 해줍니다.
+* <code>arguments</code> 객체는 *Array*가 아니기 때문에 배열 행태로 변경해줘야합니다. <code>[...arguments]</code> es6 문법을 이용하여 배열형태로 변경하였습니다. <code>[...arguments] instanceof Array</code>를 로그에 출력해보면 <code>true</code>를 반환합니다.
+* <code>slice</code>메서드를 사용한 이유는 <code>Person</code>을 제외한 나머지 인자값들을 리턴해주어야하기 때문입니다.
+
+### # ______proto______ vs prototype
+
+``` javascript
+let car = {
+  door: 4
+};
+
+let sportCar = {
+  boost: true
+};
+
+Object.setPrototypeOf(car, sportCar);
+
+car.__proto__.name = 'Ferrari';
+
+car.__proto__; // { boost: true, name: "Ferrari" }
+car.prototype; // undefined
+```
+
+* 프로토타입을 설정할 객체 - <code>car</cpde>
+* 객체의 새로운 프로토타입 - <code>sportCar</cpde>
+* **______proto______** 속성은 현재 객체가 프로토타입 체인에서 조회를 수행할 때 실제로 사용할 객체를 가리킵니다.
+
+``` javascript
+function Person() {}
+
+Person.prototype.say = 'Hello';
+
+let student = new Person();
+
+student.say; // Hello
+student.__proto__; // { say: "Hello", constructor: ƒ }
+student.__proto__ === Person.prototype // true
+```
+
+* 
