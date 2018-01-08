@@ -12,7 +12,7 @@ categories:
 
 ![](../../../../images/javascript/javascript-logo.png)
 
-최근 **Javascript**를 기초부터 다시 공부하고 있는 와중에 블로그에도 문서화 시키면 좋을 것 같아서 공부한 내용을 정리해보기로 하였습니다. 이 포스팅을 보시면서 오타가 있거나 잘못된 내용이 있다면 댓글 부탁드립니다.
+최근 **Javascript**를 기초부터 다시 공부하고 있는 와중에 블로그에도 문서화 시키면 좋을 것 같아서 공부한 내용을 정리해보기로 했습니다. 이 포스팅을 보시면서 오타가 있거나 잘못된 내용이 있다면 댓글 부탁드립니다.
 
 ### # bind and this
 
@@ -55,7 +55,7 @@ let playFunctionBound = playFunction.bind(player);
 playFunctionBound(); // basketball
 ```
 
-* <code>bind()</code>의 파라미터에 참조해야할 객체인 <code>player</code>를 인자로 전달해주었습니다. 이제 <code>this</code>는 <code>sport</code> 속성에 접근하여 이전과 다르게 *basketball*이 출력되었습니다.
+* <code>bind()</code>의 파라미터에 참조해야할 객체인 <code>player</code>를 인자로 전달해주어 <code>this</code>는 속성에 접근할 수 있게 됩니다.
 
 ``` javascript
 function play() {
@@ -133,7 +133,7 @@ soldier.say(); // Hello, sir
 strongSoldier.shout(); // HELLO, SIR
 ```
 
-* <code>setPrototypeOf</code>을 이용하여 두번째 파라미터에 <code>person</code> 객체를 전달해주었습니다. 각 객체마다 공유되는 공통 메서드이기 때문입니다.
+* <code>student</code>, <code>soldier</code>객체는 프로토타입을 설정할 객체이며 <code>person</code>객체가 가지고 있는 <code>say</code>함수는 공통 메서드로 사용할 것이기 때문에 새로운 객체의 프로토타입으로 설정하였습니다.
 * <code>strongSoldier</code> 객체에 프로토타입을 설정해주지 않으면 <code>shout</code> 함수안에 있는 <code>this</code>는 <code>greet</code>이라는 속성을 가지고 있지 않기 때문에 에러가 발생하게 됩니다.
 
 ### # The 'new' keyword
@@ -215,4 +215,43 @@ student.__proto__; // { say: "Hello", constructor: ƒ }
 student.__proto__ === Person.prototype // true
 ```
 
-* 
+* **prototype**은 함수에만 존재하며 해당 객체를 생성자로 사용하려는 경우에 사용됩니다.
+
+### # Object.create()
+
+<code>Object.create()</code> 메서드는 새로운 객체와 함께 지정된 프로토타입 객체와 속성을 갖습니다.
+
+``` javascript
+const dog = {
+  bark: function() {
+    console.log(this.sound);
+  }
+};
+
+const sam = Object.create(dog);
+sam.sound = 'bow-wow'.toUpperCase();
+sam.bark(); // BOW-WOW
+dog.isPrototypeOf(sam); // true
+```
+
+* <code>dog</code>객체가 <code>const</code>(상수)로 설정되어 있지만 객체의 속성은 언제든지 변경 및 추가할 수 있습니다.
+* <code>dog</code>객체는 <code>sam</code>의 프로토타입이므로 <code>true</code>를 반환합니다.
+
+``` javascript
+const dog = {
+  init: function(sound) {
+    this.sound = sound;
+  },
+  bark: function() {
+    console.log(this.sound);
+  }
+};
+
+const sam = Object.create(dog);
+sam.init('bow-wow'.toUpperCase());
+sam.bark(); // BOW-WOW
+dog.isPrototypeOf(sam); // true
+```
+* <code>init</code>함수는 생성자 함수와 같습니다. 결과는 같은 값을 출력합니다.
+
+### # Class keyword
