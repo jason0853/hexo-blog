@@ -1,5 +1,5 @@
 ---
-title: Obect creation
+title: Object creation
 tags:
   - Javascript
 thumbnail:
@@ -7,7 +7,9 @@ thumbnail:
 categories:
   - Front-end
   - Javascript
+date: 2018-01-09 22:45:26
 ---
+
 
 
 ![](../../../../images/javascript/javascript-logo.png)
@@ -235,7 +237,7 @@ dog.isPrototypeOf(sam); // true
 ```
 
 * <code>dog</code>객체가 <code>const</code>(상수)로 설정되어 있지만 객체의 속성은 언제든지 변경 및 추가할 수 있습니다.
-* <code>dog</code>객체는 <code>sam</code>의 프로토타입이므로 <code>true</code>를 반환합니다.
+
 
 ``` javascript
 const dog = {
@@ -252,6 +254,44 @@ sam.init('bow-wow'.toUpperCase());
 sam.bark(); // BOW-WOW
 dog.isPrototypeOf(sam); // true
 ```
-* <code>init</code>함수는 생성자 함수와 같습니다. 결과는 같은 값을 출력합니다.
+* <code>init</code>함수는 생성자 함수와 같습니다.
 
-### # Class keyword
+### # class keyword
+
+<code>class</code> 키워드는 **ECMASCRIPT6**에 추가된 기능이며 앞서 배웠던 **prototype**기반의 상속보다 좀 더 직관적이고 명료하게 사용할 수 있습니다. 하지만 저희가 일반적으로 알고 있는 자바의 클래스처럼 새로운 객체지향 상속 모델은 아닙니다.
+
+``` javascript
+class Human {
+  constructor(name) {
+    this._name = name;
+  }
+
+  hello() {
+    return `Hello ${this._name}`;  // `${}` Template literal - es6 문법
+  }
+}
+
+class Teacher extends Human {
+  constructor(name) {
+    super(name);
+  }
+}
+
+let tom = new Human('Tom');
+let john = new Teacher('John');
+
+tom.hello('Tom');  // Tom
+john.hello('John');  // John
+```
+
+* **constructor** - 객체를 생성하고 초기화하기 위한 특수한 메서드이며 **class**내에서 오직 한번만 사용할 수 있습니다.
+* **super** - 부모 클래스의 **constructor**를 호출하기 위해 사용됩니다.
+
+자바스크립트 객체에 대해 한번 정리하고 나니 기존에 이해가 가지 않았거나 놓친 부분들이 보완된 느낌입니다. 포스팅에 대한 질문이나 잘못된 내용이 있다면 댓글로 피드백 바랍니다.
+
+### Reference
+<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/>
+<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf>
+<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create>
+
+
