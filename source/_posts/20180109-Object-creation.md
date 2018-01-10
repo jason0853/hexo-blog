@@ -293,5 +293,4 @@ john.hello('John');  // John
 <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/>
 <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf>
 <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create>
-
-
+<https://www.youtube.com/watch?v=GhbhD1HR5vk&list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub>
