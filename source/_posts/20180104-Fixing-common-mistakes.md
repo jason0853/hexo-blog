@@ -105,5 +105,9 @@ $ git revert 'hash'...'hash'
 * 하나의 커밋만 <code>revert</code>하고 싶은 경우는 <code>git revert 'hash'</code>를 하시면 됩니다.
 * 여러 커밋을 하고 싶은 경우는 <code>'hash'...'hash'</code> 되돌아가고 싶은 커밋 시점부터 마지막 커밋 시점까지를 뜻합니다.
 
+### Wrap-up
+
+여기까지 Git을 사용하며 실수에 대처하는 방법에 대해서 알아보았습니다. 많은 도움이 되시길 바랍니다.
+
 ### Reference
 <https://stackoverflow.com/questions/1338728/delete-commits-from-a-branch-in-git>
