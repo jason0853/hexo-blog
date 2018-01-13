@@ -227,7 +227,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.6, bluebird@^3.2.2, bluebird@^3.4.0, bluebird@^3.5.0, bluebird@^3.5.1:
+bluebird@^3.0.6, bluebird@^3.2.2, bluebird@^3.3.4, bluebird@^3.4.0, bluebird@^3.5.0, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -917,6 +917,15 @@ hexo-front-matter@^0.2.2:
   dependencies:
     js-yaml "^3.6.1"
 
+hexo-fs@^0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-0.1.6.tgz#f980ccc3bc79d0fb92eddbd887bc20a56500d03f"
+  dependencies:
+    bluebird "^3.4.0"
+    chokidar "^1.5.2"
+    escape-string-regexp "^1.0.5"
+    graceful-fs "^4.1.4"
+
 hexo-fs@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-0.2.2.tgz#0b97b79f68df121f765d1291b8e90fae326d000e"
@@ -961,6 +970,14 @@ hexo-generator-tag@^0.2.0:
   dependencies:
     hexo-pagination "0.0.2"
     object-assign "^4.0.1"
+
+hexo-github-card@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hexo-github-card/-/hexo-github-card-1.0.2.tgz#063479df02a9ddcf94ea649a3f1f08c72a949828"
+  dependencies:
+    bluebird "^3.3.4"
+    hexo-fs "^0.1.5"
+    nunjucks "^2.4.1"
 
 hexo-i18n@^0.2.1:
   version "0.2.1"
@@ -1547,7 +1564,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nunjucks@^2.4.2:
+nunjucks@^2.4.1, nunjucks@^2.4.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-2.5.2.tgz#ea7d346e785b8a4874666c3cca9e18c577fba22c"
   dependencies:

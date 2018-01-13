@@ -6,6 +6,8 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ## Quick Start
 
+{% githubCard user:jason0853 repo:hexo-blog width:100% %}
+
 ### Create a new post
 
 ``` bash
