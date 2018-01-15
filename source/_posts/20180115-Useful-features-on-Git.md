@@ -28,7 +28,7 @@ $ git stash list
   1. **unstaged files**들은 백업해두면서 *working directory*는 최신 커밋상태로 돌아갑니다.
   2. **untracked files**들은 백업되지 않습니다.
   3. 브랜치를 변경해도 stash는 공유됩니다.
-* <code>pop</code>은 apply<code></code>와 달리 적용되면서 stash에서 제거됩니다.
+* <code>pop</code>은 <code>apply</code>와 달리 적용되면서 stash에서 제거됩니다.
 * 주로 커밋작업할 준비가 아직 되어 있지 않을때 <code>stash</code>를 이용하여 백업해둡니다.
 
 ### # Cherry-pick
@@ -84,7 +84,7 @@ $ git push --tags
 
 ### Wrap-up
 
-Git 작업을 하면서 **stash**, **cherry-pick**, **tag**를 상황에 맞게 적절히 이용하면서 사용하길 바랍니다.
+Git 작업을 하면서 **stash**, **cherry-pick**, **tag**를 상황에 맞게 적절히 이용하면서 사용하시길 바랍니다.
 
 ### Reference
 <https://git-scm.com/book/ko/v1/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%ED%83%9C%EA%B7%B8>
