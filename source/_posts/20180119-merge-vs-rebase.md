@@ -62,7 +62,7 @@ test 브랜치에서 **rebase** 작업을 하였습니다.
 ![](../../../../images/git/git-merge-vs-rebase-06.png)
 
 충돌을 해결한 뒤 파일을 staging area로 옮깁니다. git 상태 체크를 다시 해봅니다. 
-*all conflicts fixed: fun "git rebase --continue"*라는 메세지가 보입니다.
+*all conflicts fixed: run "git rebase --continue"*라는 메세지가 보입니다.
 충돌이 더 이상 없으면 Auto-merging 작업이 충돌없이 잘 진행됩니다.
 
 ![](../../../../images/git/git-merge-vs-rebase-07.png)
