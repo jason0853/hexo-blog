@@ -26,10 +26,10 @@ let player = {
   }
 };
 
-player.play(); // basketball
+player.play();  // basketball
 
 let playFunction = player.play;
-playFunction(); // undefined
+playFunction();  // undefined
 ```
 
 * *undefined*가 로그에 찍히는 이유는 <code>this</code> 키워드를 통해 **context**에 접근할 수 있는데 <code>playFunction</code>은 단순히 함수입니다. 10번째 줄 코드는 아래코드와 동일합니다.
@@ -50,11 +50,11 @@ let player = {
   }
 };
 
-player.play(); // basketball
+player.play();  // basketball
 
 let playFunction = player.play;
 let playFunctionBound = playFunction.bind(player);
-playFunctionBound(); // basketball
+playFunctionBound();  // basketball
 ```
 
 * <code>bind()</code>의 파라미터에 참조해야할 객체인 <code>player</code>를 인자로 전달해주어 <code>this</code>는 속성에 접근할 수 있게 됩니다.
@@ -69,7 +69,7 @@ let player = {
 };
 
 let playBound = play.bind(player);
-playBound(); // basketball
+playBound();  // basketball
 ```
 
 * 이번에는 함수를 <code>player</code> 객체로부터 분리해놓고 설명해보겠습니다. <code>bind</code> 함수를 사용하기 이전에 코드를 살펴보면은 <code>play</code> 함수 안에 있는 <code>this</code>는 **window** 객체(웹 브라우저) 혹은 **global** 전역 객체(node.js)를 가리킵니다. 그렇기 때문에 <code>this</code>가 <code>player</code> 객체를 바라보도록 컨텍스트를 변경해야합니다.
@@ -89,8 +89,8 @@ let anotherPlayer = {
   sport: 'swimming'
 };
 
-player.do(); // basketball
-anotherPlayer.swim(); // swimming
+player.do();  // basketball
+anotherPlayer.swim();  // swimming
 ```
 
 * <code>anotherPlayer</code> 객체 하나를 더 생성해 보았습니다. 각 객체의 <code>do</code>, <code>swim</code> 속성에 <code>play</code> 함수가 복사되면서 <code>this</code>가 가리키는 컨텍스트는 각 객체 자신입니다.
@@ -109,7 +109,7 @@ function say() {
 }
 
 let person = {
-  say // === say: say 와 동일합니다. es6 syntax
+  say  // === say: say 와 동일합니다. es6 syntax
 };
 
 let student = {
@@ -130,9 +130,9 @@ Object.setPrototypeOf(student, person);
 Object.setPrototypeOf(soldier, person);
 Object.setPrototypeOf(strongSoldier, soldier);
 
-student.say(); // Hello
-soldier.say(); // Hello, sir
-strongSoldier.shout(); // HELLO, SIR
+student.say();  // Hello
+soldier.say();  // Hello, sir
+strongSoldier.shout();  // HELLO, SIR
 ```
 
 * <code>student</code>, <code>soldier</code>객체는 프로토타입을 설정할 객체이며 <code>person</code>객체가 가지고 있는 <code>say</code>함수는 공통 메서드로 사용할 것이기 때문에 새로운 객체의 프로토타입으로 설정하였습니다.
@@ -170,8 +170,8 @@ function create(ctor) {
 let jason = create(Person, 'Jason', 32);
 let jane = new Person('Jane', 28);
 
-jason.introduce(); // My name is Jason I'm 32
-jane.introduce(); // My name is Jane I'm 32
+jason.introduce();  // My name is Jason I'm 32
+jane.introduce();  // My name is Jane I'm 32
 ```
 
 * **new**의 역할 : <code>create</code>함수와 동일
@@ -197,8 +197,8 @@ Object.setPrototypeOf(car, sportCar);
 
 car.__proto__.name = 'Ferrari';
 
-car.__proto__; // { boost: true, name: "Ferrari" }
-car.prototype; // undefined
+car.__proto__;  // { boost: true, name: "Ferrari" }
+car.prototype;  // undefined
 ```
 
 * 프로토타입을 설정할 객체 - <code>car</cpde>
@@ -212,8 +212,8 @@ Person.prototype.say = 'Hello';
 
 let student = new Person();
 
-student.say; // Hello
-student.__proto__; // { say: "Hello", constructor: ƒ }
+student.say;  // Hello
+student.__proto__;  // { say: "Hello", constructor: ƒ }
 student.__proto__ === Person.prototype // true
 ```
 
@@ -232,8 +232,8 @@ const dog = {
 
 const sam = Object.create(dog);
 sam.sound = 'bow-wow'.toUpperCase();
-sam.bark(); // BOW-WOW
-dog.isPrototypeOf(sam); // true
+sam.bark();  // BOW-WOW
+dog.isPrototypeOf(sam);  // true
 ```
 
 * <code>dog</code>객체가 <code>const</code>(상수)로 설정되어 있지만 객체의 속성은 언제든지 변경 및 추가할 수 있습니다.
@@ -252,7 +252,7 @@ const dog = {
 const sam = Object.create(dog);
 sam.init('bow-wow'.toUpperCase());
 sam.bark(); // BOW-WOW
-dog.isPrototypeOf(sam); // true
+dog.isPrototypeOf(sam);  // true
 ```
 * <code>init</code>함수는 생성자 함수와 같습니다.
 
