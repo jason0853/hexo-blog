@@ -401,6 +401,11 @@ function _render() {
 
 ### # PubSub Design Pattern
 
+``` sequence
+Publisher->Event Channel: Publish Event(발행)
+Event Channel->Subscriber: Fire Event(발행 알림)
+Subscriber-->Event Channel: Subscriber(구독 신청)
+```
 **PubSub Design Pattern**은 발행(publish)/구독(subscribbe) 모델로 알려져 있으며 어떤 대상의 상태값이 변경되었을 경우 이를 감지하고 있는 구독자들은 이것을 인지하고 자동으로 업데이트 해줍니다. 분산 이벤트 시스템을 구현할 때 널리 사용됩니다.
 
 {% gist d60d8c0612c6f74d17462667c65072a7 %}
