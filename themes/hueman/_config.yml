@@ -24,11 +24,11 @@ customize:
 
 # Widgets
 widgets:
-    # - recent_posts
     - category
     # - archive
     # - tag
     - tagcloud
+    - recent_posts
     # - links
 
 # Search
