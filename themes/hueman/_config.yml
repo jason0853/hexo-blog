@@ -24,12 +24,12 @@ customize:
 
 # Widgets
 widgets:
-    - recent_posts
+    # - recent_posts
     - category
-    - archive
-    - tag
+    # - archive
+    # - tag
     - tagcloud
-    - links
+    # - links
 
 # Search
 search:
