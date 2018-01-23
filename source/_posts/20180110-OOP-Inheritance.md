@@ -102,7 +102,7 @@ frontendEngineer.master = function() {
 * 기본적으로 **Prototypal Pattern** 은 모든 것이 객체입니다. *object literal*로 시작한 다음 객체를 상속을 하려면 <code>Object.create()</code>을 사용합니다. **Classical Inheritance**보다 상속을 구현하기가 더 쉬우며 직관적입니다.
 * <code>Object.create()</code>는 *ECMASCRIPT5* 스펙으로 하위브라우저(IE8이하)는 지원하지 않습니다.
 
-아래코드는 위코드보다 동일하며 좀 더 보안된 코드입니다.
+아래코드는 위코드랑 동일하며 좀 더 보안된 코드입니다.
 
 ``` javascript 
 let employee = {
