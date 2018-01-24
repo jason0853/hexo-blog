@@ -139,8 +139,7 @@ let frontendEngineer = webEngineer.create({
 
 
 ### Reference
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript>
-<https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor>
-<https://www.youtube.com/watch?v=doXpW5AD60Q&index=7&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f>
-<https://www.youtube.com/watch?v=sWOXYDBbz0g&index=6&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f>
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create>
+
+[Mozilla - 객체지향 자바스크립트 소개](https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+[StackOverflow - Why is it necessary to set the prototype constructor?](https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor)
+[Mozilla - Object.create()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create)

@@ -3,6 +3,7 @@ title: Using design pattern to refactory jQuery spaghetti code
 tags:
   - Javascript
   - jQuery
+  - Design Pattern
 thumbnail:
   - ../../../../images/javascript/javascript-logo.png
 categories:
@@ -523,5 +524,6 @@ function _render() {
 자바스크립트 디자인 패턴을 적용하게 되면은 규모가 큰 어플리케이션에서 좀 더 생산적이고 효율적으로 작업을 할 수 있습니다. 포스팅을 보시고 수정 혹은 잘못된 부분은 댓글 부탁드립니다.
 
 ### Reference
-<https://stackoverflow.com/questions/30793066/how-to-avoid-memory-leaks-from-jquery>
-<https://hackernoon.com/observer-vs-pub-sub-pattern-50d3b27f838c>
+
+[Stackoverflow - How to avoid memory leaks from jQuery?](https://stackoverflow.com/questions/30793066/how-to-avoid-memory-leaks-from-jquery)
+[Observer vs Pub-Sub pattern](https://hackernoon.com/observer-vs-pub-sub-pattern-50d3b27f838c)

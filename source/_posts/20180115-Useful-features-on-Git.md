@@ -4,6 +4,7 @@ tags:
   - git
 thumbnail: ../../../../images/git/git-logo.png
 categories:
+  - Tool
   - Git
 date: 2018-01-15 15:56:46
 ---
@@ -87,4 +88,5 @@ $ git push --tags
 Git 작업을 하면서 **stash**, **cherry-pick**, **tag**를 상황에 맞게 적절히 이용하면서 사용하시길 바랍니다.
 
 ### Reference
-<https://git-scm.com/book/ko/v1/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%ED%83%9C%EA%B7%B8>
+
+[Git documentation - 태그](https://git-scm.com/book/ko/v1/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%ED%83%9C%EA%B7%B8)

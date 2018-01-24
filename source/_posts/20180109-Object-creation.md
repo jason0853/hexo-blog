@@ -292,7 +292,7 @@ john.hello('John');  // John
 자바스크립트 객체에 대해 한번 정리하고 나니 기존에 이해가 가지 않았거나 놓친 부분들이 보완된 느낌입니다. 포스팅에 대한 질문이나 잘못된 내용이 있다면 댓글로 피드백 바랍니다.
 
 ### Reference
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/>
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf>
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create>
-<https://www.youtube.com/watch?v=GhbhD1HR5vk&list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub>
+
+[Mozilla - Object](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/)
+[Mozilla - Object.setPrototypeOf()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
+[Mozilla - Object.create()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
