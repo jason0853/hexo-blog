@@ -864,6 +864,10 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
+hexo-auto-canonical@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/hexo-auto-canonical/-/hexo-auto-canonical-0.1.1.tgz#9d864d6a915e399c6d1b89042846eb0bf209fc9b"
+
 hexo-bunyan@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hexo-bunyan/-/hexo-bunyan-1.0.0.tgz#b2106b26547b232f0195db863cb5d5ff8527fd36"

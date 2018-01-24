@@ -38,6 +38,7 @@
         google_plus:    theme.miscellaneous.open_graph.google_plus,
     }) %>
     <%- meta(page) %>
+    <%- autoCanonical(config, page) %>
 
     <% if (theme.customize && theme.customize.social_links && theme.customize.social_links.rss) { %>
         <link rel="alternate" href="<%- theme.customize.social_links.rss %>" title="<%= config.title %>" type="application/atom+xml" />
