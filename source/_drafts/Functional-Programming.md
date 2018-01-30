@@ -32,7 +32,7 @@ let result = sum;
 result(3);  // 6
 ```
 
-위 코드처럼 함수는 변수에 할당될 수 있으며 **입출력이 순수**하기 하기 때문에 **side-effect가 전혀 없습니다.** 그럼 자바스크립트에서 **higher-order function**하면 자주 언급되는 함수들을 한번 살펴보겠습니다.
+위 코드처럼 함수는 변수에 할당될 수 있으며 **입출력이 순수**하기 하기 때문에 **side-effect가 전혀 없습니다.** 그럼 자바스크립트에서 **higher-order function**하면 자주 언급되는 함수들과 필요한 개념들을 한번 살펴보겠습니다.
 
 ### # Filter
 
@@ -116,23 +116,225 @@ let totalPrice = orders.reduce((sum, order) => sum + order.price, 0);  // arrow 
 // 66000
 ```
 
-* <code>reduce</code>의 두번째 파라미터는 초기값을 설정해주기 때문에 변수에 initial 값을 지정해 줄 필요가 없어졌습니다.
+* <code>reduce</code>의 두번째 파라미터는 초기값을 설정해주기 때문에 변수로 initial 값을 지정해 줄 필요가 없어졌습니다.
 
 ### # Closure
 
-**Closure(클로저)**란 
+**Closure(클로저)**란 외부함수가 실행이 끝났음에도 불구하고 내부함수가 외부함수의 변수에 접근할 수 있는 것을 가리킵니다.
 
 ``` js
 let count = function() {
   let _number = 0;
   return function() {
-    _number++
+    _number++;
     return _number;
   }
 };
 
-let increase = count();
-increase();
+let increase = count();  // increase -> 클로저
+increase();  // 1
+increase();  // 2
+increase();  // 3
 ```
 
-*
+* <code>count()</code> 함수가 실행되어 내부함수를 return하여 종료되었음에도 불구하고 <code>increase()</code> 함수는 호출되면서 <code>count</code> 함수의 지역변수인 <code>_number</code>에 접근하게 되어 값이 제대로 출력됩니다.
+* <code>increase</code>에서 **클로저**가 생성됩니다.
+
+이번에 조금 다른 예제로 클로저를 다뤄보겠습니다.
+
+``` js
+function makeNumber(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+
+var sum3 = makeNumber(3);  // sum3 -> 클로저
+var sum5 = makeNumber(5);  // sum5 -> 클로저
+sum3(10);  // 13
+sum5(10);  // 15
+```
+
+* <code>makeNumber</code>는 두 개의 새로운 함수들을 만들기 위해 **함수 팩토리**를 사용합니다.
+* <code>a</code> 인자를 보통 자유변수라고 부르며 <code>b</code> 인자를 묶인 변수라고 합니다.
+* 문법적 환경으로 바라보았을 때 <code>sum3</code>의 <code>a = 3</code>이며, <code>sum5</code>의 <code>a = 5</code>입니다.
+
+### # Currying
+
+**Currying(커링)**은 한 번에 모든 인자를 전달하지 않고 첫번째 인자를 전달하고 두번째 인자를 전달할 새 함수를 반환합니다. 이렇게 인자의 일부만 받도록 하는 기법을 **커링**이라고 부릅니다.
+
+``` js
+let person = 
+      name => 
+        age => 
+          job => 
+            `I'm ${name}. I'm ${age}. I work as a ${job}.`;
+
+let personName = person('Jason');
+let personAge = personName(33);
+personAge('Front-end Engineer');
+
+/* Output */
+// I'm Jason. I'm 33. I work as a Front-end Engineer.
+```
+
+* <code>person</code> 함수는 **커링** 기법을 사용할 수 있게 파라미터 이후에 함수를 계속 리턴해주었습니다.
+
+``` js
+const _ = require('lodash');
+
+let person = (name, age, job) => `I'm ${name}. I'm ${age}. I work as a ${job}`;
+
+person = _.curry(person);
+
+let personName = person('Jason'); 
+let personAge = personName(33);
+personAge('Front-end Engineer');
+
+/* Output */
+// I'm Jason. I'm 33. I work as a Front-end Engineer.
+```
+
+* lodash 라이브러리를 이용하여 <code>person</code> 함수를 **커링**할 수 있는 함수로 만들어 보았습니다.
+
+위에서 filter 함수를 다뤄보았을 때 underscore 라이브러리를 사용하여 은퇴한 선수들과 현역 선수들을 구분했었습니다. 이번에는 lodash의 curry 함수를 사용하여 구분해보겠습니다.
+
+``` js
+const _ = require('lodash');
+
+let players = [
+  { name: 'Kyrie Irving', retire: false },
+  { name: 'Kobe Bryant', retire: true },
+  { name: 'Tracy Mcgrady', retire: true  },
+  { name: 'Aaron Gordon', retire: false },
+  { name: 'Tim Duncan', retire: true }
+];
+
+let retired = _.curry((val, obj) => obj.retire === val);
+
+let retiredPlayers = players.filter(retired(true));
+let currentPlayers = players.filter(retired(false));
+
+/* Output: retiredPlayers */
+/* 
+[ { name: 'Kobe Bryant', retire: true },
+  { name: 'Tracy Mcgrady', retire: true },
+  { name: 'Tim Duncan', retire: true } ]
+*/
+
+/* Output: currentPlayers */
+/* 
+[ { name: 'Kyrie Irving', retire: false },
+  { name: 'Aaron Gordon', retire: false } ]
+*/
+```
+
+### # Recursion
+
+**Recursion(재귀)**는 함수가 자기 자신을 호출하는 것을 말하며, 어느 조건을 주었을 경우 만족할 때까지 반복문처럼 계속 호출합니다. **함수형 프로그래밍**에서는 반복문 대신 재귀를 사용합니다.
+
+``` js
+let count = (num) => {
+  if (num === 0) return;
+  console.log(num);
+  count(num-1);
+};
+
+count(10);
+
+/* Output */
+/*
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+*/
+```
+
+* <code>count</code> 함수는 0이 되기 전까지 계속 자기 자신을 호출하기 때문에 **재귀 함수**라고 할 수 있습니다.
+
+이번에는 **재귀함수**를 응용해서 object tree 구조를 한 번 만들어보겠습니다.
+
+``` js
+let categories = [
+  { id: 'human', parent: null },
+  { id: 'test', parent: null },
+  { id: 'men', parent: 'human' },
+  { id: 'women', parent: 'human' },
+  { id: 'jason', parent: 'men' },
+  { id: 'tom', parent: 'men' },
+  { id: 'jane', parent: 'women' },
+];
+
+/* Result */
+
+{
+  human: {
+    men: {
+      'jason': {},
+      'tom': {}
+    },
+    women: {
+      'jane': {},
+    }
+  }
+}
+```
+
+<code>categories</code>라는 데이터베이스가 있다고 가정하고 재귀함수를 사용하여 위와 같이 똑같은 결과값이 나오도록 해보겠습니다.
+
+``` js
+let categories = [
+  { id: 'human', parent: null },
+  { id: 'men', parent: 'human' },
+  { id: 'women', parent: 'human' },
+  { id: 'jason', parent: 'men' },
+  { id: 'tom', parent: 'men' },
+  { id: 'jane', parent: 'women' }
+];
+
+let makeObjectTree = (categories, parent) => {
+  let obj = {};
+
+  categories
+    .filter(c => c.parent === parent)
+    .forEach(c => obj[c.id] = makeObjectTree(categories, c.id));
+
+  return obj;
+};
+
+JSON.stringify(makeObjectTree(categories, null), null, 2);
+
+/* Output */
+/*
+{
+  human: {
+    men: {
+      'jason': {},
+      'tom': {}
+    },
+    women: {
+      'jane': {},
+    }
+  }
+}
+*/
+```
+
+* <code>JSON.stringify()</code>를 사용해서 자바스크립트 값을 JSON 문자열로 변경하였습니다.
+
+***주의) 반복문보다 속도가 느리며 stack을 사용하기 때문에 재귀호출이 많아지면 성능상에 이슈가 발생합니다.***
+
+### # Promise
+
+
+
+### Reference
+
+[Mozilla - 클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures)
