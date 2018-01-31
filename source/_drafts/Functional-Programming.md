@@ -18,7 +18,7 @@ categories:
 
 * 버그가 적음.
 * 추론하기가 쉬움.
-* 시간이 절약.
+* 시간 절약.
 
 우선 기본적으로 함수형 프로그래밍을 어떻게 하는지 알아보겠습니다.
 
@@ -332,6 +332,32 @@ JSON.stringify(makeObjectTree(categories, null), null, 2);
 ***주의) 반복문보다 속도가 느리며 stack을 사용하기 때문에 재귀호출이 많아지면 성능상에 이슈가 발생합니다.***
 
 ### # Promise
+
+**Promise**는 콜백처럼 비동기를 다루는 방식 중에 하나입니다.
+
+``` js
+let test = (str) => new Promise((reslove, reject) => {
+  if (typeof str === 'string') {
+    reslove(str);
+  } else {
+    let msg = 'This argument must be string';
+    reject(new Error(msg));
+  }
+});
+
+let arr = [];
+
+Promise.all([ test('test1'), test('test2'), test('test3') ])
+  .then(data => {
+    data.forEach((val) => arr.push(val));
+  })
+  .catch(err => console.error(err));
+
+console.log(arr);  // ["test1", "test2", "test3"]
+```
+
+* <code>Promise</code>는 ECMA6의 글로벌 객체에 포함되어 있으며 표준으로 채택되었습니다.
+* **Promise**의 가장 큰 장점은 콜백 지옥에서 벗어날 수 있다는 점입니다.
 
 
 
