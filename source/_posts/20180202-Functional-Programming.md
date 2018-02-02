@@ -7,11 +7,13 @@ thumbnail:
 categories:
   - Front-end
   - Javascript
+date: 2018-02-02 15:37:46
 ---
+
 
 ![](../../../../images/javascript/javascript-logo.png)
 
-**Functional Programming(함수형 프로그래밍)**은 기존 [객체지향 프로그래밍](https://jason0853.github.io/2018/01/10/OOP-Inheritance/)처럼 객체에 존재하는 property나 method를 사용하는 것과 달리 이름 그대로 함수를 기반으로 프로그래밍 하는 기법입니다. 최근 개발자들 사이에서 **함수형 프로그래밍**이 trend로 잡고 있는데 어떤 점이 좋은지 한번 정리해보겠습니다.
+**Functional Programming(함수형 프로그래밍)**은 기존 [객체지향 프로그래밍](https://jason0853.github.io/2018/01/10/OOP-Inheritance/)처럼 객체에 존재하는 property나 method를 사용하는 것과 달리 이름 그대로 함수를 기반으로 프로그래밍하는 기법입니다. 최근 개발자들 사이에서 **함수형 프로그래밍**이 trend로 잡고 있는데 어떤 점이 좋은지 한번 정리해보겠습니다.
 
 
 ### # The advantage of Functional Programming
@@ -32,7 +34,7 @@ let result = sum;
 result(3);  // 6
 ```
 
-위 코드처럼 함수는 변수에 할당될 수 있으며 **입출력이 순수**하기 하기 때문에 **side-effect가 전혀 없습니다.** 그럼 자바스크립트에서 **higher-order function**하면 자주 언급되는 함수들과 필요한 개념들을 한번 살펴보겠습니다.
+위 코드처럼 함수는 변수에 할당될 수 있으며 **입출력이 순수**하기 하기 때문에 **side-effect가 전혀 없습니다.** 그럼 자바스크립트에서 **Higher-Order Function**하면 자주 언급되는 함수들과 필요한 개념들을 한번 살펴보겠습니다.
 
 ### # Filter
 
@@ -257,14 +259,13 @@ count(10);
 */
 ```
 
-* <code>count</code> 함수는 0이 되기 전까지 계속 자기 자신을 호출하기 때문에 **재귀 함수**라고 할 수 있습니다.
+* <code>count</code> 함수는 0이 되기 전까지 계속 자기 자신을 호출하기 때문에 **재귀함수**라고 할 수 있습니다.
 
 이번에는 **재귀함수**를 응용해서 object tree 구조를 한 번 만들어보겠습니다.
 
 ``` js
 let categories = [
   { id: 'human', parent: null },
-  { id: 'test', parent: null },
   { id: 'men', parent: 'human' },
   { id: 'women', parent: 'human' },
   { id: 'jason', parent: 'men' },
@@ -359,8 +360,53 @@ console.log(arr);  // ["test1", "test2", "test3"]
 * <code>Promise</code>는 ECMA6의 글로벌 객체에 포함되어 있으며 표준으로 채택되었습니다.
 * **Promise**의 가장 큰 장점은 콜백 지옥에서 벗어날 수 있다는 점입니다.
 
+### # Functor
 
+**Functor**는 map(매핑)될 수 있는 객체이며, 주로 컴퓨터 공학에서 사용됩니다. 기존 값들은 유지 및 변형시키면서 새로운 결과물(**functor**)를 얻게 됩니다. 아래 예제를 통해 한번 설명을 해보겠습니다.
+
+``` js
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = arr.map(num => num * 2);
+
+console.log(newArr);  // [2, 4, 6, 8, 10]
+```
+
+* <code>map</code> 메서드를 통해 변형이 일어납니다. 하지만 기존 <code>arr</code> 배열안에 있는 값들은 바뀌지 않습니다.
+* <code>newArr</code>은 <code>map</code> 메서드를 통해 새로운 배열, 즉 매핑될 수 있는 새로운 **functor**를 얻게 됩니다.
+
+아래 코드도 위와 같은 **functor**의 또 다른 예제입니다.
+
+``` js
+const arr = [
+  { name: 'Jason', age: 33 },
+  { name: 'Jane', age: 28 },
+  { name: 'Tom', age: 37}
+];
+
+const newArr = arr.map(obj => {
+  let newObj = {};
+
+  newObj[obj.name] = obj.age;
+
+  return newObj;
+});
+
+console.log(newArr);  // [{"Jason":32},{"Jane":30},{"Tom":31}]
+```
+
+### Wrap-up
+
+**함수형 프로그래밍**의 특징
+
+* **High Order Function**을 통한 코드 재사용성.
+* 항상 부작용이 없는 **Pure Function** 유지.
+* <code>for</code>, <code>if</code>구문식보다는 **표현식** 사용. 
+* **Immutable**한 데이터 구조
+
+지금까지 함수형 프로그래밍을 다루면서 필요한 개념들을 다뤄보았습니다. 위 포스팅에 잘못된 내용이나 오타가 있는 부분은 댓글 부탁드립니다.
 
 ### Reference
 
 [Mozilla - 클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures)
+[함수형 프로그래밍이란 무엇인가?](http://sungjk.github.io/2017/07/17/fp.html)
