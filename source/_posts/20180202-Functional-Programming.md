@@ -402,7 +402,7 @@ console.log(newArr);  // [{"Jason":32},{"Jane":30},{"Tom":31}]
 * **High Order Function**을 통한 코드 재사용성.
 * 항상 부작용이 없는 **Pure Function** 유지.
 * <code>for</code>, <code>if</code>구문식보다는 **표현식** 사용. 
-* **Immutable**한 데이터 구조
+* **Immutable**한 데이터 구조.
 
 지금까지 함수형 프로그래밍을 다루면서 필요한 개념들을 다뤄보았습니다. 위 포스팅에 잘못된 내용이나 오타가 있는 부분은 댓글 부탁드립니다.
 
