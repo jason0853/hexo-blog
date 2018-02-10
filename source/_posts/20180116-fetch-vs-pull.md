@@ -4,6 +4,7 @@ tags:
   - git
 thumbnail: ../../../../images/git/git-logo.png
 categories:
+  - Tool
   - Git
 date: 2018-01-16 13:27:40
 ---
@@ -45,4 +46,5 @@ ex) <code>git merge origin/master</code>
 결국 <code>git pull</code> = <code>git fetch</code> + <code>git merge</code>를 합한 결과라고 보면 될 것 같습니다.
 
 ### Reference
-<https://git-scm.com/book/ko/v1/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A6%AC%EB%AA%A8%ED%8A%B8-%EB%B8%8C%EB%9E%9C%EC%B9%98>
+
+[Git documentation - 리모트 브랜치](https://git-scm.com/book/ko/v1/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%A6%AC%EB%AA%A8%ED%8A%B8-%EB%B8%8C%EB%9E%9C%EC%B9%98)

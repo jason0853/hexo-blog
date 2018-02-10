@@ -4,6 +4,7 @@ tags:
   - git
 thumbnail: ../../../../images/git/git-logo.png
 categories:
+  - Tool
   - Git
 date: 2018-01-19 16:52:11
 ---
@@ -82,4 +83,5 @@ ex) <code>git add index.html</code>
 개인적으로는 로컬 브랜치에서 병합을 진행할 때 히스토리를 깔끔하게 보기 위해서 **rebase**를 즐겨쓰는 편이기는 하지만 **merge** 작업 또한 히스토리를 변경하지 않고 로그가 남기 때문에 프로젝트 회고 시간을 가질 때 좋은 것 같습니다. 각각 장단점이 있기 때문에 어떤 것이 우월하다고 말하기 곤란하며 각자의 상황과 판단에 맞춰서 쓰시길 추천합니다. 
 
 ### Reference
-<https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0>
+
+[Git documentation - Rebase 하기](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0)

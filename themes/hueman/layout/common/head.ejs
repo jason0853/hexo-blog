@@ -38,6 +38,7 @@
         google_plus:    theme.miscellaneous.open_graph.google_plus,
     }) %>
     <%- meta(page) %>
+    <%- autoCanonical(config, page) %>
 
     <% if (theme.customize && theme.customize.social_links && theme.customize.social_links.rss) { %>
         <link rel="alternate" href="<%- theme.customize.social_links.rss %>" title="<%= config.title %>" type="application/atom+xml" />
@@ -55,4 +56,6 @@
 
     <%- js('libs/jquery/2.0.3/jquery.min') %>
     <%- partial('plugin/scripts', { isHead: true }) %>
+
+    <%- partial('ads/adsense_page') %>
 </head>

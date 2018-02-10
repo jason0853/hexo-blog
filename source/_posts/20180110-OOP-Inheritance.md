@@ -102,7 +102,7 @@ frontendEngineer.master = function() {
 * 기본적으로 **Prototypal Pattern** 은 모든 것이 객체입니다. *object literal*로 시작한 다음 객체를 상속을 하려면 <code>Object.create()</code>을 사용합니다. **Classical Inheritance**보다 상속을 구현하기가 더 쉬우며 직관적입니다.
 * <code>Object.create()</code>는 *ECMASCRIPT5* 스펙으로 하위브라우저(IE8이하)는 지원하지 않습니다.
 
-아래코드는 위코드보다 동일하며 좀 더 보안된 코드입니다.
+아래코드는 위코드랑 동일하며 좀 더 보안된 코드입니다.
 
 ``` javascript 
 let employee = {
@@ -139,8 +139,7 @@ let frontendEngineer = webEngineer.create({
 
 
 ### Reference
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript>
-<https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor>
-<https://www.youtube.com/watch?v=doXpW5AD60Q&index=7&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f>
-<https://www.youtube.com/watch?v=sWOXYDBbz0g&index=6&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f>
-<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create>
+
+[Mozilla - 객체지향 자바스크립트 소개](https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+[StackOverflow - Why is it necessary to set the prototype constructor?](https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor)
+[Mozilla - Object.create()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create)

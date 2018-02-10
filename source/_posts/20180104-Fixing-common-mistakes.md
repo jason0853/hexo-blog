@@ -4,6 +4,7 @@ tags:
   - git
 thumbnail: ../../../../images/git/git-logo.png
 categories:
+  - Tool
   - Git
 date: 2018-01-04 16:25:06
 ---
@@ -110,4 +111,5 @@ $ git revert 'hash'...'hash'
 여기까지 Git을 사용하며 실수에 대처하는 방법에 대해서 알아보았습니다. 많은 도움이 되시길 바랍니다.
 
 ### Reference
-<https://stackoverflow.com/questions/1338728/delete-commits-from-a-branch-in-git>
+
+[StackOverflow - Delete commits from a branch in Git](https://stackoverflow.com/questions/1338728/delete-commits-from-a-branch-in-git)
