@@ -1,5 +1,5 @@
 ---
-title: 2018 카카오 코딩 테스트 (비밀지도)
+title: 2018 카카오 코딩 테스트 (비밀 지도)
 tags:
   - Algorithm
   - Javascript
@@ -58,7 +58,7 @@ function addZero(digits, data) {
   return data;
 }
 
-function test(n, arr1, arr2) {
+function secretMap(n, arr1, arr2) {
   const result = [];
   let testNum1, testNum2;
   
@@ -82,8 +82,8 @@ function test(n, arr1, arr2) {
   return result;
 }
 
-test(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-test(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
+secretMap(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+secretMap(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
 
 // output1 : ["#####","# # #", "### #", "# ##", "#####"]
 // output2 : ["######", "### #", "## ##", " #### ", " #####", "### # "]
@@ -98,7 +98,7 @@ test(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
 정답은 맞혔지만 위 문제 해설을 보면은 **비트 연산**을 잘 활용할 수 있는지를 묻는 문제였습니다. 그럼 **비트 연산**을 통해 다시 풀어보겠습니다.
 
 ``` js
-function test(n, arr1, arr2) {
+function secretMap(n, arr1, arr2) {
   const result = [];
 
   for (let i = 0, int, binary; i < n; i++) {
@@ -110,8 +110,8 @@ function test(n, arr1, arr2) {
   return result;
 }
 
-test(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-test(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
+secretMap(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+secretMap(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
 
 // output1 : ["#####","# # #", "### #", "# ##", "#####"]
 // output2 : ["######", "### #", "## ##", " #### ", " #####", "### # "]
