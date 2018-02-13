@@ -101,9 +101,9 @@ secretMap(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]);
 function secretMap(n, arr1, arr2) {
   const result = [];
 
-  for (let i = 0, int, binary; i < n; i++) {
-    int = (arr1[i] | arr2[i]);
-    binary = int.toString(2);
+  for (let i = 0; i < n; i++) {
+    const int = (arr1[i] | arr2[i]);
+    const binary = int.toString(2);
     result.push(binary.replace(/1/g, '#').replace(/0/g, ' '));
   }
 
