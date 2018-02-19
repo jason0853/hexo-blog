@@ -117,7 +117,7 @@ function showMovie(opt) {
 }
 
 // ES6
-function showMovie({ title: tit, genre, rating = 'R'}) {
+function showMovie({ title: tit, genre, rating = 'R' }) {
   console.log(`title: ${tit}, genre: ${genre}, rating: ${rating}`);
 }
 
@@ -152,7 +152,82 @@ const p1 = new Person(...info);
 p1.log();  // name: Jason, age: 33, job: Front-end Engineer
 ```
 
+* <code>...</code> **전개 연산자** 문법입니다.
 * **전개 연산자**를 이용했기 때문에 굳이 <code>push()</code> 함수 및 파라미터 전달을 하나하나 할 필요가 없어졌습니다.
+
+이렇게 3가지 새로운 문법에 대해서 간략히 살펴보았는데 코드량이 상당히 줄어들어 가독성이 향상되는 장점이 있는 것 같습니다.
+
+### # Arrow Function
+
+**Arrow Function(화살표 함수)**는 간결하고 **this**가 기존의 ES5와 다르게 작동합니다. 또한 생성자 함수로는 적합하지 않습니다.
+
+``` js
+function Movie(title) {
+  this.title = title;
+
+  // ES5
+  setTimeout(function() {
+    console.log(this.title);  // Jason Bourne
+  }.bind(this), 1000);
+
+  // ES6
+  setTimeout(() => {
+    console.log(this.title);  // Jason Bourne
+  }, 1000);
+}
+
+const m1 = new Movie('Jason Bourne');
+```
+
+* ES5 문법에서 <code>bind(this)</code>를 하지 않으면 <code>this</code>는 window 객체를 가리킵니다.
+* ES6 문법에서는 <code>this</code>가 새로운 target으로 바인딩되지 않고 <code>Movie</code> 객체를 정확히 참조합니다.
+
+``` js
+const playerInfo = [
+  { position: 'PG', name: 'Kyrie Irving', score: 20, retired: false },
+  { position: 'SG', name: 'Kobe Bryant', score: 30, retired: true },
+  { position: 'SG', name: 'Tracy Mcgrady', score: 25, retired: true },
+  { position: 'PF', name: 'Aaron Gordon', score: 20, retired: false },
+  { position: 'PF', name: 'Tim Duncan', score: 23, retired: true },
+];
+
+// ES5
+const sgTotalScore = playerInfo
+  .filter(function(info) {
+    return info.retired === true;
+  })
+  .filter(function(info) {
+    return info.position === 'SG';
+  })
+  .map(function(info) {
+    return info.score;
+  })
+  .reduce(function(prev, score) {
+    return prev + score;
+  }, 0);
+
+// ES6
+const sgTotalScore = playerInfo
+  .filter(info => info.retired === true)
+  .filter(info => info.position === 'SG')
+  .map(info => info.score)
+  .reduce((prev, score) => (prev || 0) + score);
+
+console.log(sgTotalScore1);  // 55
+console.log(sgTotalScore2);  // 55
+```
+
+* **화살표 함수** 또한 ES5로 작성한 코드보다 코드량이 확실히 줄어들었습니다. 
+* parameter가 한 개이면 <code>()</code>안에 매개변수를 넣을 필요가 없습니다.
+* brackets <code>{}</code>이 없으면 <code>return</code>한 것과 같은 문법입니다.
+
+### # class keyword
+
+자바스크립트 [Object creation](https://jason0853.github.io/2018/01/09/Object-creation/)에 대해 다룬 포스팅에 있으니 참고바랍니다.
+
+### # Generator
+
+
 
 ### Wrap-up
 
