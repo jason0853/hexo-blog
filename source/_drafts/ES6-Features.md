@@ -1,0 +1,163 @@
+---
+title: ES6 Features
+tags:
+  - Javascript
+  - ES6
+thumbnail:
+  - ../../../../images/javascript/javascript-logo.png
+categories:
+  - Front-end
+  - Javascript
+---
+
+![](../../../../images/javascript/javascript-logo.png)
+
+자바스크립트 관련 포스팅을 하면서 **ES6** 문법을 간혹 쓴 경우가 있었는데 이번 기회에 **ES6** 문법 기능을 한번 정리해보겠습니다. 물론 기존 Vanilla Javascript(ES5)도 우수하지만 **ES6** 문법을 혼용해서 쓰면 좀 더 간결하게 코드를 작성할 수 있고 다른 언어에서 지원되는 클래스(물론 무늬만)나 상수 지원도 있습니다.
+
+### # var, let, const
+
+기본적으로 <code>var</code>는 **function-scope**이고 <code>let</code>, <code>const</code>는 **block-scope**입니다.
+
+``` js
+// ES5
+var i = 1000;
+(function() {
+  // var i 호이스팅(hoisting) 
+  for (i = 0; i < 3; i++) {
+    console.log(i);  // 0, 1, 2
+  }
+
+  var i;
+})();
+
+console.log('after loop', i);  // after loop 1000
+
+// ES6
+var i = 1000;
+for (let i = 0; i < 3; i++) {
+  console.log(i);  // 0, 1, 2
+}
+
+console.log('after loop', i);  // after loop 1000
+```
+
+* ES5 문법을 보면 함수 안에 <code>var i;</code>는 나중에 선언되었지만 에러가 나지 않고 **호이스팅(hoisting)**이 일어나면서 함수 최상단으로 끌어올려집니다. 위에서 언급한대로 <code>var</code>는 함수 스코프 단위로 범위가 정해져있기 때문에 loop가 끝나고 나서는 <code>console.log('after loop', i);</code>는 함수 바깥에 선언된 변수 <code>i</code>에 접근하게 됩니다.
+* ES6 문법에서는 ES5와 달리 블록 단위로 변수 범위가 정해져있습니다. ES5처럼 굳이 함수를 만들지 않아도 위와 똑같은 결과물이 나옵니다. 하지만 <code>var</code>처럼 변수를 나중에 선언하게 되면은 호이스팅은 되지만 <code>Uncaught ReferenceError: i is not defined</code> 에러가 발생합니다. 그 이유는 <code>let</code>은 **항상 선언이 된 뒤에 값이 할당되어야 한다는 전제 조건**이 있기 때문입니다.
+
+``` js
+let name;
+name = 'Jaesung';
+name = 'Jason';
+console.log(name);
+
+const age;  // Uncaught SyntaxError: Missing initializer in const declaration
+```
+
+* <code>let</code>는 **선언은 먼저 하고 값은 나중에 할당**해도 상관없습니다.
+* <code>const</code>는 **항상 선언과 값을 함께 할당**해야 에러가 발생하지 않습니다.
+
+``` js
+const age = 33;
+age = 34;  // Uncaught TypeError: Assignment to constant variable.
+```
+
+* <code>const</code>는 **재할당 불가**입니다.
+
+``` js
+const person = {
+  name: 'Jaesung',
+  age: 33
+};
+
+person.name = 'Jason';
+person.job = true;
+
+person = {  // Uncaught TypeError: Assignment to constant variable.
+  job: true
+};
+```
+
+* <code>const</code>는 **객체의 property 값을 변경 및 새로운 property 값을 추가할 수 있지만 재할당 불가**입니다.
+
+프로그래밍을 할 때 변경 가능한 상태(mutable state)를 최소화하는 습관을 들이는 것이 중요합니다. 많은 이슈와 에러가 예상치 못한 곳에서 발생하기 때문에 디버깅하기가 너무 어렵기 때문입니다. 최근 자바스크립트에서는 <code>var</code>를 지양하고 <code>let</code>과 <code>const</code>를 지향하라고 권장합니다. 
+
+### # Destructuring / Template Literals / Spread Operator
+
+**Destructuring**은 비구조화 할당이라고 하며 객체와 배열을 변수로 변환해주는 기능입니다.
+**Template Literals**은 <code>`${}`</code> 문법을 제공하여 좀 더 편리하게 문자열을 처리할 수 있는 기능입니다.
+**Spread Operator**은 전개 연산자라 하며 2개 이상의 인자, 요소, 변수들을 확장시키는 기능입니다.
+
+``` js
+const movie = {
+  title: 'Friends with Benefits',
+  genre: 'Romance'
+};
+
+const { title: tit, genre: gen, rating = 'R' } = movie;
+
+console.log(tit);  // Friends with Benefits
+console.log(gen);  // Romance
+console.log(rating);  // R
+```
+
+* 위 코드 6번째 줄을 보면 객체의 속성을 별개의 변수로 추출하여 새로운 변수(<code>title: tit</code>, <code>genre: gen</code>) 및 default 값(<code>rating = 'R'</code>)을 제공할 수 있습니다.
+
+``` js
+showMovie({
+  title: 'Jason Bourne',
+  genre: 'Action'
+});
+
+// ES5
+function showMovie(opt) {
+  var tit = opt.title,
+      genre = opt.genre,
+      rating = opt.rating || 'R';
+  console.log('title: ' + opt.title + ', genre: ' + opt.genre + ', rating: ' + rating);
+}
+
+// ES6
+function showMovie({ title: tit, genre, rating = 'R'}) {
+  console.log(`title: ${tit}, genre: ${genre}, rating: ${rating}`);
+}
+
+// Output
+// title: Jason Bourne, genre: Action, rating: R
+```
+
+* ES6 문법을 적용하니 확실히 코드량이 줄어들었습니다. 특히 **Template Literals** 문법을 사용하니 ES5보다 문자열 처리가 간결해졌습니다.
+ 
+``` js
+const numbers = [1, 2, 3, 4, 5];
+const [first, ...rest] = numbers;
+
+console.log(first);  // 1
+console.log(...rest);  // 2 3 4 5
+
+const Person = function(name, age, job) {
+  this.name = name;
+  this.age = age;
+  this.job = job;
+};
+
+Person.prototype.log = function() {
+  console.log(`name: ${this.name}, age: ${this.age}, job: ${this.job}`);
+}
+
+const subInfo = [33, 'Front-end Engineer'];
+const info = ['jason', ...subInfo];
+// info.push(...subInfo);
+
+const p1 = new Person(...info);
+p1.log();  // name: Jason, age: 33, job: Front-end Engineer
+```
+
+* **전개 연산자**를 이용했기 때문에 굳이 <code>push()</code> 함수 및 파라미터 전달을 하나하나 할 필요가 없어졌습니다.
+
+### Wrap-up
+
+
+
+### Reference
+
+[비구조화 할당](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
