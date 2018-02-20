@@ -8,11 +8,13 @@ thumbnail:
 categories:
   - Front-end
   - Javascript
+date: 2018-02-20 17:57:20
 ---
+
 
 ![](../../../../images/javascript/javascript-logo.png)
 
-자바스크립트 관련 포스팅을 하면서 **ES6** 문법을 간혹 쓴 경우가 있었는데 이번 기회에 **ES6** 문법 기능을 한번 정리해보겠습니다. 물론 기존 Vanilla Javascript(ES5)도 우수하지만 **ES6** 문법을 혼용해서 쓰면 좀 더 간결하게 코드를 작성할 수 있고 다른 언어에서 지원되는 클래스(물론 무늬만)나 상수 지원도 있습니다.
+자바스크립트 관련 포스팅을 하면서 **ES6** 문법을 간혹 쓴 경우가 있었는데 이번 기회에 **ES6** 문법 기능을 한번 정리해보겠습니다. 물론 기존 Vanilla Javascript(ES5)도 우수하지만 **ES6** 문법을 혼용해서 쓰면 좀 더 간결하게 코드를 작성할 수 있고 다른 언어에서 지원되는 클래스(물론 무늬만)나 상수도 지원받을 수 있습니다.
 
 ### # var, let, const
 
@@ -42,7 +44,7 @@ console.log('after loop', i);  // after loop 1000
 ```
 
 * ES5 문법을 보면 함수 안에 <code>var i;</code>는 나중에 선언되었지만 에러가 나지 않고 **호이스팅(hoisting)**이 일어나면서 함수 최상단으로 끌어올려집니다. 위에서 언급한대로 <code>var</code>는 함수 스코프 단위로 범위가 정해져있기 때문에 loop가 끝나고 나서는 <code>console.log('after loop', i);</code>는 함수 바깥에 선언된 변수 <code>i</code>에 접근하게 됩니다.
-* ES6 문법에서는 ES5와 달리 블록 단위로 변수 범위가 정해져있습니다. ES5처럼 굳이 함수를 만들지 않아도 위와 똑같은 결과물이 나옵니다. 하지만 <code>var</code>처럼 변수를 나중에 선언하게 되면은 호이스팅은 되지만 <code>Uncaught ReferenceError: i is not defined</code> 에러가 발생합니다. 그 이유는 <code>let</code>은 **항상 선언이 된 뒤에 값이 할당되어야 한다는 전제 조건**이 있기 때문입니다.
+* ES6 문법에서는 ES5와 달리 블록 단위로 변수 범위가 정해져있습니다. ES5처럼 굳이 함수를 만들지 않아도 위와 똑같은 결과물이 나옵니다. 하지만 <code>var</code>처럼 변수를 나중에 선언하게 되면은 호이스팅은 되지만 <code>Uncaught ReferenceError: i is not defined</code> 에러가 발생할 것입니다.. 그 이유는 <code>let</code>은 **항상 선언이 된 뒤에 값이 할당되어야 한다는 전제 조건**이 있기 때문입니다.
 
 ``` js
 let name;
@@ -79,7 +81,7 @@ person = {  // Uncaught TypeError: Assignment to constant variable.
 
 * <code>const</code>는 **객체의 property 값을 변경 및 새로운 property 값을 추가할 수 있지만 재할당 불가**입니다.
 
-프로그래밍을 할 때 변경 가능한 상태(mutable state)를 최소화하는 습관을 들이는 것이 중요합니다. 많은 이슈와 에러가 예상치 못한 곳에서 발생하기 때문에 디버깅하기가 너무 어렵기 때문입니다. 최근 자바스크립트에서는 <code>var</code>를 지양하고 <code>let</code>과 <code>const</code>를 지향하라고 권장합니다. 
+프로그래밍을 할 때 변경 가능한 상태(mutable state)를 최소화하는 습관을 들이는 것이 중요합니다. 왜냐하면 에러가 예상치 못한 곳에서 발생하기 때문에 디버깅하기가 너무 어렵기 때문입니다. 최근 자바스크립트에서는 <code>var</code>를 지양하고 <code>let</code>과 <code>const</code>를 지향하라고 권장합니다. 
 
 ### # Destructuring / Template Literals / Spread Operator
 
@@ -227,12 +229,84 @@ console.log(sgTotalScore2);  // 55
 
 ### # Generator
 
+**Generator**는 비동기코드를 동기적으로 프로그매밍 할 수 있도록 도와주는 편한 기능입니다.
 
+``` js
+const data = [
+  { name: 'Jason', 
+    profile: {
+      age: 33, 
+      gender: 'Male' 
+    }
+  },
+  { name: 'Jane', 
+    profile: {
+      age: 29, 
+      gender: 'Female'
+    }
+  }
+];
+```
+
+``` sequence
+Get name->Get profile: name
+Get profile->Get gender: profile
+Note right of Get gender: gender
+```
+
+위와 같은 데이터 구조(<code>data</code>)를 참조하여 다이어그램 순서대로 처리해서 결과값(gender)를 도출해야된다고 가정해봅시다.
+**제너레이터**를 좀 더 쉽게 사용하기 위해 [co 라이브러리](https://www.npmjs.com/package/co)를 사용해서 실습해보겠습니다.
+
+``` js
+const co = require('co');
+
+function getName(name) {
+  return data.filter((e) => e.name === name );
+}
+
+function getProfile(name) {
+  return name.map((e) => e.profile);
+};
+
+function getGender(profile) {
+  const gender = profile[0].gender;
+  return Promise.resolve(gender);
+};
+
+co(function* () {
+  const name = yield getName('Jason');
+  const profile = yield getProfile(name);
+  const gender = yield getGender(profile);
+  return gender;
+}).then(result => {
+  console.log(result);  // Male
+});
+```
+
+* <code>yeild</code> 표현을 통해 함수의 return 값을 반환합니다.
+* 만약 콜백으로 처리했다면 코드는 스파게티 코드처럼 더럽혀져 있었을겁니다.
+
+이번에는 co 라이브러리를 사용하지 않고 16 - 23번째 줄을 **async/ await** 문법으로 바꿔 똑같은 결과물을 도출해보겠습니다.
+
+``` js
+// (중략)
+async function showGender(personName) {
+  const name = await getName(personName);
+  const profile = await getProfile(name);
+  const gender = await getGender(profile);
+  return gender;
+}
+showGender('Jason').then(res => console.log(res));  // Male
+```
+
+* <code>function*</code> -> <code>async function</code>, <code>yield</code> -> <code>await</code> 두 개의 키워드만 바뀌었고 Promise로 반환하는 것까지 똑같습니다. 
+* 라이브러리의 도움없이 사용할 수 있는 장점이 있지만 아직 브라우저의 표준 스펙은 아닙니다.
 
 ### Wrap-up
 
-
+이전 회사에서 ES6로 자바스크립트 개발을 해본 경험이 있습니다. 하지만 그 당시에는 제대로 개념을 익히지 않고 개발을 진행하다보니 ES6 문법 및 기능을 최대한 활용하지 못했던 것 같습니다. 만약 그 당시로 돌아가서 개발한다면 '코드량을 확실히 줄이고 가독성도 향상시켰을텐데' 하는 아쉬움이 있습니다. ㅎㅎ 
 
 ### Reference
 
 [비구조화 할당](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+[ES6의 제너레이터를 사용한 비동기 프로그래밍](http://meetup.toast.com/posts/73)
