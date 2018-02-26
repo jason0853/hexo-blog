@@ -76,10 +76,10 @@ for (let obj of test) {
 ```
 
 * <code>calculateTime</code> 메서드는 string 타입으로 된 시간 표시를 number 타입으로 계산하는 함수입니다.
-***예) 시간 * 60 / 분 * 1 - 09:01 - 541***
+***예) 시간 X 60 / 분 X 1 - 09:01 - 541***
 * <code>formatTime</code> 메서드는 <code>calculateTime</code>와 반대로 다시 string 타입으로 시간 표시를 해주는 함수힙니다. 마지막 값을 리턴해줄때 사용합니다.
 * <code>startTime + t \* (n - 1)</code> 계산값은 버스의 마지막 시간을 구하게 됩니다.
-***예) 셔틀버스 시작 시간 + 시간 간격 x (셔틀버스 횟수 - 1)***
+***예) 셔틀버스 시작 시간 + 시간 간격 X (셔틀버스 횟수 - 1)***
 * <code>timetable.map(calculateTime)</code> 배열 값을 전부 time 계산값으로 바꿔줍니다.
 * <code>timetable.filter(time => time <= lastTime)</code> 셔틀버스의 마지막 시간보다 늦게 오면 탈 수 없으므로 필터링 해줍니다.
 * <code>timetable.sort</code> 배열을 오름차순으로 정렬해줍니다.
