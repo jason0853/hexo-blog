@@ -32,7 +32,7 @@ const test = [
   { n: 1, t: 1, m: 5, timetable: ["00:01", "00:01", "00:01", "00:01", "00:01"] },
   { n: 1, t: 1, m: 1, timetable: ["23:59"] },
   { n: 10, t: 60, m: 45, timetable: ["23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"] },
-]
+];
 
 function shuttleBus(n, t, m, timetable) {
   function calculateTime(str) {
@@ -69,7 +69,7 @@ function shuttleBus(n, t, m, timetable) {
 }
 
 for (let obj of test) {
-  console.log(shuttleBus(obj.n, obj.t, obj.m, obj.timetable))
+  console.log(shuttleBus(obj.n, obj.t, obj.m, obj.timetable));
 }
 
 // output: 09:00, 09:09, 08:59, 00:00, 09:00, 18:00
