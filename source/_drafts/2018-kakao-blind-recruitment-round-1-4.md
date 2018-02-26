@@ -85,11 +85,7 @@ for (let obj of test) {
 * <code>timetable.sort</code> 배열을 오름차순으로 정렬해줍니다.
 * <code>n</code> 버스 횟수만큼 for loop를 돌려서 각각의 <code>shuttleTime</code>(셔틀버스 도착시간)과 <code>crewNum</code>(셔틀버스 도착시간 전에 온 크루들 몇 명)를 구합니다.
 * <code>splice</code> 함수를 통해 셔틀버스 도착시간 전에 온 크루들이 버스 사이즈보다 더 많을 경우 다 타지 못하므로 사이즈(<code>m</code>)만큼 배열을 잘라줍니다.
-<<<<<<< HEAD
 * <code>if (i === n - 1)</code> 조건문을 통해 마지막 loop를 돌때 남아있는 crewTime의 남아있는 배열 시간값을 알수 있습니다. 이 값들을 통해 버스를 탈 수 있는 가장 늦은 시각을 구할 수 있습니다.
-=======
-* <code>if (i === n - 1)</code> 조건문은 마지막 loop를 돌때 남아있는 crewTime의 배열 시간값들입니다. 이 값들을 통해 버스를 탈 수 있는 가장 늦은 시각을 구할 수 있습니다.
->>>>>>> a5bd6debd60d4e71f633cd6c856bbbc42b0bb4d9
 
 ![](../../../../images/algorithm/2018-kakao-blind-recruitment-round-1-4-03.png)
 
