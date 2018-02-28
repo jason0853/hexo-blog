@@ -80,7 +80,7 @@ $ tsc 'filename' -t 'target'
 * <code>removeComments</code> : 주석 삭제
 * <code>strict</code> : 모두 엄격하게 type checking 
 (noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes, strictPropertyInitialization)
-* <code>sourceMap</code> : map 파일 비활성화
+* <code>sourceMap</code> : map 파일 비활성화 (vscode에서 디버깅할려면 true로 변경해야함)
 * <code>pretty</code> : error message colorfully 출력
 * <code>noEmitOnError</code> : compile 대상 리스트
 * <code>include</code> : error 발생시 결과 파일 저장 안함
