@@ -59,12 +59,14 @@ Typescript
 $ tsc *.ts
 $ tsc 'filename' --watch
 $ tsc 'filename' -t 'target'
+$ tsc --init
 ```
 
 * asterisk(\*)을 사용하여 모든 ts 파일을 js 파일로 complie합니다.
 * <code>watch</code> 옵션은 해당 파일을 계속 감지하여 js 파일로 변경시켜줍니다.
 * <code>t</code> 옵션은 target의 약자로 타입스크립트의 기본 compile system은 ES3로 target이 정해져 있습니다. 만약 ES5로 바꾸고 싶다면 아래와 같이 명령어를 실행시켜주세요.
 예) <code>tsc test.ts -t ES5</code>
+* tsconfig.json 파일을 생성시켜줍니다. 그 이후 <code>tsc</code> 명령어를 치면 모든 타입스크립트 파일이 자바스크립트 파일로 compile 됩니다.
 
 ### # tsconfig.json
 
@@ -80,13 +82,48 @@ $ tsc 'filename' -t 'target'
 * <code>removeComments</code> : 주석 삭제
 * <code>strict</code> : 모두 엄격하게 type checking 
 (noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes, strictPropertyInitialization)
-* <code>sourceMap</code> : map 파일 비활성화 (vscode에서 디버깅할려면 true로 변경해야함)
+* <code>sourceMap</code> : map 파일 생성 (vscode에서 디버깅할려면 true로 변경해야함)
 * <code>pretty</code> : error message colorfully 출력
 * <code>noEmitOnError</code> : compile 대상 리스트
 * <code>include</code> : error 발생시 결과 파일 저장 안함
 * <code>exclude</code> : compile 대상 제외 리스트
 
 이 옵션 이외에도 다양한 옵션들이 많이 있습니다. [여기](http://www.typescriptlang.org/docs/handbook/compiler-options.html)를 참고해주세요.
+
+### # Debug
+
+vscode에서 디버깅하는 방법을 한번 알아보겠습니다. 아래처럼 폴더 구조와 파일을 만들어주고 코드를 넣어주세요. <code>tsconfig.json</code>파일에는 위 코드를 copy/paste 해주세요.
+
+``` plain
+- src
+  |-test.ts
+tsconfig.json
+```
+
+``` ts
+function debug(text: string): string {
+  return text;
+}
+
+console.log(debug('Debugging'));
+```
+
+![](../../../../images/typescript/typescript-basic-and-configuration-01.png)
+
+CMD + Shift + B 를 누르면 tsc: watch - tsconfig.json을 선택합니다. 그럼 코드가 바뀔때마다 compile 작업을 하면서 dist 폴더에 test.js 파일과 test.js.map 파일이 생성됩니다.
+이제 breakpoint를 걸고 디버깅을 해보겠습니다.
+
+![](../../../../images/typescript/typescript-basic-and-configuration-02.png)
+
+코드 넘버 라인 왼쪽에 breakpoint(중단점)을 걸고 vscode 왼쪽 네번째 디버깅 버튼을 선택합니다. 왼쪽 사이드바가 바뀌면 디버그 버튼 클릭하고 Node.js를 선택합니다.
+
+![](../../../../images/typescript/typescript-basic-and-configuration-03.png)
+
+디버깅이 시작됩니다.
+
+![](../../../../images/typescript/typescript-basic-and-configuration-04.png)
+
+DEBUG CONSOLE에 <code>Debugging</code>이 출력됩니다.
 
 ### Wrap-up
 
