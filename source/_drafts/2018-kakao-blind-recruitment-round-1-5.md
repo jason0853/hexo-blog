@@ -36,31 +36,34 @@ const test = [
 ];
 
 function newsClustering(str1, str2) {
-  const arr1 = [], arr2 = [];
-  let intSecNum = 0, unionNum = 0, flag = false;
+  const arr = [];
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < arguments.length; i++) {
     const str = arguments[i].toLowerCase();
-  
-    for (let i = 0, len = str.length - 1; i < len; i++) {
-      let reg = str.slice(i, i+2).match(/^[a-zA-Z]*$/);
+    arr[i] = [];
 
-      if (reg) {
-        if (!flag) arr1.push(reg.input);
-        else arr2.push(reg.input);
-      }
+    for (let j = 0, len = str.length - 1; j < len; j++) {
+      let reg = str.substr(j, 2).match(/^[a-z]*$/);
+
+      if (reg) arr[i].push(reg.input);
     }
-    
-    flag = true;
   }
 
-  arr1.filter(char => arr2.indexOf(char) > -1 && intSecNum++);
+  const set = new Set([...arr[0], ...arr[1]]);
+  let size1, size2, intsecNum = 0, unionNum = 0;
 
-  if (!intSecNum) intSecNum = 1;
+  set.forEach(val => {
+    size1 = arr[0].filter(char => char === val).length;
+    size2 = arr[1].filter(char => char === val).length;
 
-  unionNum = Math.abs(arr1.length + arr2.length - intSecNum);
+    intsecNum += Math.min(size1, size2);
+    unionNum += Math.max(size1, size2);
+  });
 
-  return Math.floor(intSecNum / unionNum * 65536);
+  if (!intsecNum) intsecNum = 1;
+  if (!unionNum) unionNum = 1;
+
+  return Math.floor(intsecNum / unionNum * 65536);
 }
 
 for (let obj of test) {
