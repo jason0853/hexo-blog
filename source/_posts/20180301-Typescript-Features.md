@@ -289,7 +289,7 @@ let engineer: Foreigner = {id: 111, name: 'Jason', alive: true, say: (lang: stri
 // let engineer = <Foreigner>{};
 ```
 
-* <code>?</code> **Optional Property**입니다. 인터페이스에 기술한 프로퍼티나 반드시 구현되어야 하지만 선택적 프로퍼티(?)를 붙이면 생략해도 무방합니다.
+* <code>?</code> **Optional Property**입니다. 인터페이스에 기술한 프로퍼티와 메소드가 반드시 구현되어야 합니다. 하지만 선택적 프로퍼티(?)를 붙이면 생략해도 무방합니다.
 * 클래스랑 같이 쓸때 메소드 내부를 반드시 구현해야합니다.
 * 여러 인터페이스 상속이 가능합니다.
 * <code>engineer</code> 변수를 초기화하지 않고 비어있는 객체로 설정하고 싶다면 **Generic** 문법을 사용하여 빈 객체로 둔 상태에서 property를 추가해줄수 있습니다.

@@ -225,7 +225,7 @@ console.log(sgTotalScore2);  // 55
 
 ### # class keyword
 
-자바스크립트 [Object creation](https://jason0853.github.io/2018/01/09/Object-creation/)에 대해 다룬 포스팅에 있으니 참고바랍니다.
+[이전 포스팅](https://jason0853.github.io/2018/01/09/Object-creation/)에 **class**에 대해 다룬 포스팅이 있으니 참고바랍니다.
 
 ### # Generator
 
