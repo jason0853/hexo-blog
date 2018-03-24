@@ -35,7 +35,7 @@ const test = [
 function chuseokTraffic(logs) {
   const numArr = logs.map(log => log.match(/\d+/g).slice(3, 9).map(c => Number(c)));  // 숫자 정규식 / 날짜 제외 slice / number 타입으로 변경
   const time = [], lengths = [];
-  let endTime, interval, empty = [];
+  let endTime, interval, window = [];
   for (let arr of numArr) {
     arr.forEach((elem, idx) => {
       switch (idx) {
@@ -52,9 +52,9 @@ function chuseokTraffic(logs) {
   }
 
   time.forEach(t => {
-    empty = empty.filter(end => end > t.startTime - 1000);
-    empty.push(t.endTime);
-    lengths.push(empty.length);
+    window = window.filter(end => end > t.startTime - 1000);
+    window.push(t.endTime);
+    lengths.push(window.length);
   });
 
   return Math.max(...lengths);
@@ -69,14 +69,17 @@ for (let arr of test) {
 
 * 로그데이터를 처리하는데 필요한 부분만 필터링을 해서 <code>numArr</code> 변수에 저장합니다.
 * 1s = 1,000ms, 1m = 60s * 1,000ms, 1h = 60m * 60,000ms를 참고하여 시간을 계산해줍니다.
+* 변수 <code>endTime</code>은 ms로 변환한 값(시간, 분, 초, 밀리세컨드)을 더한 값이며, <code>startTime</code>은 끝시간(<code>endTime</code>)에서 처리시간(<code>interval</code>)을 빼주고 요청이 시작된 순간을 포함해야하기 때문에 1을 더해줍니다.
+* 끝시간이 다음 시작되는 구간에서 1000ms를 뺀 값보다 클 경우 <code>window</code>(초당 최대 처리량이 되는 구간) 배열에 담아 각 구간의 처리량을 <code>lengths</code>배열에 저장해둡니다.
+* <code>forEach</code> 구문이 끝나면 <code>Math.max()</code> 함수를 이용하여 <code>lengths</code> 배열안에 최대값을 구합니다.
 
 ![](../../../../images/algorithm/2018-kakao-blind-recruitment-round-1-7-05.png)
 
-확실히 정답률이 낮았습니다. 다른 문제들과 달리 접근자체를 하지 못했었습니다. 문제해설을 보시면 **o(n log n)**으로 풀 수 있는 방법도 있다고 합니다. 다음에 기회가 된다면 이런 방식으로 한 번 고민해서 풀어봐야겠습니다.
+확실히 정답률이 낮았습니다. 저 역시도 다른 문제들과 달리 해결 방법이 쉽게 떠오르지 않았습니다. 문제해설을 보시면 **o(n log n)**으로 풀 수 있는 방법도 있다고 합니다. 다음에 기회가 된다면 이런 방식으로 한 번 고민해서 풀어봐야겠습니다.
 
 ### Wrap-up
 
-마지막 문제까지 다 풀어보았습니다. 다음에 시간이 허락된다면 풀었던 문제들을 좀 더 개선된 알고리즘으로 해결해서 공유해볼 수 있도록 노력해보겠습니다.
+드디어 마지막 문제까지 다 풀어보았습니다. 블로그에 정리해놨으니 시간이 한참 지나서 코드를 리뷰할 때 한결 빠르게 코드를 읽어나갈 수 있을것 같습니다.ㅋㅋ 다음에 시간이 허락된다면 풀었던 문제들을 좀 더 개선된 알고리즘으로 해결해서 공유해볼 수 있도록 노력해보겠습니다.
 
 ### Reference
 
