@@ -4,7 +4,7 @@ tags:
   - Algorithm
   - Javascript
 thumbnail:
-  - ../../../../images/algorithm/algorithm-logo.png
+  - ../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png
 categories:
   - Algorithm
 date: 2018-02-05 13:41:22
@@ -12,7 +12,7 @@ date: 2018-02-05 13:41:22
 
 
 
-![](../../../../images/algorithm/algorithm-logo.png)
+![](../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png)
 
 최근 카카오에서 신입 공채로 코딩 테스트를 진행했었습니다. 문제들을 보니 재미있을 것 같아서 한번 풀어보고 블로그에 포스팅 해보기로 하였습니다.
 우선 1번 문제인 비밀지도(난이도: 하) 문제부터 차례대로 포스팅해보겠습니다.

@@ -4,14 +4,14 @@ tags:
   - Algorithm
   - Javascript
 thumbnail:
-  - ../../../../images/algorithm/algorithm-logo.png
+  - ../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png
 categories:
   - Algorithm
 date: 2018-02-12 17:57:13
 ---
 
 
-![](../../../../images/algorithm/algorithm-logo.png)
+![](../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png)
 
 [지난 포스팅](https://jason0853.github.io/2018/02/05/2018-kakao-blind-recruitment-round-1-1/)에 이어 신입 공채 두번째 문제를 풀어보도록 하겠습니다. 지난번 문제보다는 살짝 어렵지만 너무 겁먹지 마세요. 막상 풀면 별거 아닌것 같습니다.ㅋㅋ
 

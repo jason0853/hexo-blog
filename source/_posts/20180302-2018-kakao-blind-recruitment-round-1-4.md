@@ -4,14 +4,14 @@ tags:
   - Algorithm
   - Javascript
 thumbnail:
-  - ../../../../images/algorithm/algorithm-logo.png
+  - ../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png
 categories:
   - Algorithm
 date: 2018-03-02 23:15:27
 ---
 
 
-![](../../../../images/algorithm/algorithm-logo.png)
+![](../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png)
 
 이번 문제는 정말 어려웠었습니다. 난이도도 중으로 표시되어 있어서 쫄았었는데 진짜 푸는데 몇 일 걸렸습니다. 예상컨대 다음 문제부터는 못 풀지도 모르겠습니다. ㅠㅠ 하이튼 같이 한번 제가 푼 방식을 공유해보겠습니다.
 

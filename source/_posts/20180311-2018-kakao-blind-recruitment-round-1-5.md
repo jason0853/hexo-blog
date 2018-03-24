@@ -4,7 +4,7 @@ tags:
   - Algorithm
   - Javascript
 thumbnail:
-  - ../../../../images/algorithm/algorithm-logo.png
+  - ../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png
 categories:
   - Algorithm
 date: 2018-03-11 16:57:09
@@ -12,7 +12,7 @@ date: 2018-03-11 16:57:09
 
 
 
-![](../../../../images/algorithm/algorithm-logo.png)
+![](../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png)
 
 이번 알고리즘은 중으로 표시되어있지만 생각보다 쉬웠습니다. 긴말 할 필요없이 바로 문제 요약해보고 풀이해보겠습니다.
 
@@ -75,6 +75,8 @@ function newsClustering(str1, str2) {
 for (let obj of test) {
   console.log(newsClustering(obj.str1, obj.str2));
 }
+
+// output: 16384, 65536, 43690, 65536
 ```
 
 * 파라미터로 전달받은 각 문자열(<code>str1</code>,<code>str2</code>)을 <code>toLowerCase()</code> 메서드를 이용하여 소문자로 만들어주었습니다. 대문자로 만들어도 무방합니다.

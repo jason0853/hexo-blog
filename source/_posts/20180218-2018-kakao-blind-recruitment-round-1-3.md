@@ -4,14 +4,14 @@ tags:
   - Algorithm
   - Javascript
 thumbnail:
-  - ../../../../images/algorithm/algorithm-logo.png
+  - ../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png
 categories:
   - Algorithm
 date: 2018-02-18 16:52:13
 ---
 
 
-![](../../../../images/algorithm/algorithm-logo.png)
+![](../../../../images/algorithm/2018-kakao-blind-recruitment-logo.png)
 
 이번 문제는 난이도가 [지난 포스팅](https://jason0853.github.io/2018/02/12/2018-kakao-blind-recruitment-round-1-2/)보다 쉬워서 조금 빨리 풀 수 있었습니다. 한번 같이 문제를 살펴볼까요?ㅋㅋ
 
