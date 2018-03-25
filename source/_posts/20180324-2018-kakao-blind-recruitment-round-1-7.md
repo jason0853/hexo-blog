@@ -71,8 +71,8 @@ for (let arr of test) {
 
 * 로그데이터를 처리하는데 필요한 부분만 필터링을 해서 <code>numArr</code> 변수에 저장합니다.
 * 1s = 1,000ms, 1m = 60s x 1,000ms, 1h = 60m x 60,000ms를 참고하여 시간을 계산해줍니다.
-* 변수 <code>endTime</code>은 ms로 변환한 값(시간, 분, 초, 밀리세컨드)을 더한 값이며, <code>startTime</code>은 끝시간(<code>endTime</code>)에서 처리시간(<code>interval</code>)을 빼주고 요청이 시작된 순간을 포함해야하기 때문에 1을 더해줍니다.
-* 끝시간이 다음 시작되는 구간에서 1000ms를 뺀 값보다 클 경우 <code>window</code>(초당 최대 처리량이 되는 구간) 배열에 담아 각 구간의 처리량을 <code>lengths</code>배열에 저장해둡니다.
+* 변수 <code>endTime</code>은 ms로 변환한 값(시간, 분, 초, 밀리세컨드)을 더한 값이며, <code>startTime</code>은 끝시간(<code>endTime</code>)에서 처리시간(<code>interval</code>)을 빼주고 시작시간을 포함해야하므로 1을 더해줍니다. 예) 끝시간이 3607000ms이고 처리시간이 2000ms이면 시작시간은 3605001이 되어야합니다.
+* 끝시간이 다음 로그 시작되는 구간에서 1000ms를 뺀 값보다 클 경우 <code>window</code>(초당 최대 처리량이 되는 구간) 배열에 담아 각 구간의 처리량을 <code>lengths</code>배열에 저장해둡니다.
 * <code>forEach</code> 구문이 끝나면 <code>Math.max()</code> 함수를 이용하여 <code>lengths</code> 배열안에 최대값을 구합니다.
 
 ![](../../../../images/algorithm/2018-kakao-blind-recruitment-round-1-7-05.png)
