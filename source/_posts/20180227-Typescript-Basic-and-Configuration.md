@@ -87,6 +87,7 @@ $ tsc --init
 * <code>noEmitOnError</code> : compile 대상 리스트
 * <code>include</code> : error 발생시 결과 파일 저장 안함
 * <code>exclude</code> : compile 대상 제외 리스트
+* <code>lib</code> : 라이브러리 목록
 
 이 옵션 이외에도 다양한 옵션들이 많이 있습니다. [여기](http://www.typescriptlang.org/docs/handbook/compiler-options.html)를 참고해주세요.
 
@@ -124,6 +125,34 @@ CMD + Shift + B 를 누르면 tsc: watch - tsconfig.json을 선택합니다. 그
 ![](../../../../images/typescript/typescript-basic-and-configuration-04.png)
 
 DEBUG CONSOLE에 <code>Debugging</code>이 출력됩니다.
+
+### Issue
+
+타입스크립트를 공부하다보니 에러가 중간중간 생기는 바람에 공부하는 흐름이 끊긴 적이 간혹 있었습니다. 아래는 문제해결 방법입니다.
+
+#### <code>cannot find name 'console'.</code> 해결 방법
+
+``` shell
+$ yarn add --dev @types/node
+```
+
+#### <code>Cannot redeclare block-scoped variable 'name'.</code>
+
+``` json
+{
+    "compilerOptions": {
+        "lib": [
+            "es2015"
+        ]
+    }
+}
+```
+
+#### <code>Unknown compiler option 'strictPropertyInitialization'.</code>
+
+``` shell
+$ yarn add --dev typescript@latest
+```
 
 ### Wrap-up
 

@@ -294,6 +294,79 @@ let engineer: Foreigner = {id: 111, name: 'Jason', alive: true, say: (lang: stri
 * 여러 인터페이스 상속이 가능합니다.
 * <code>engineer</code> 변수를 초기화하지 않고 비어있는 객체로 설정하고 싶다면 **Generic** 문법을 사용하여 빈 객체로 둔 상태에서 property를 추가해줄수 있습니다.
 
+### # type alias VS interface
+
+앞에 살짝 다뤘던 type alias와 interface까지 공부해보았습니다. 그런데 여기서 궁금한 점이 하나 생겼습니다. **interface**와 **type alias**의 차이는 무엇일까요?
+
+``` ts
+interface Profile {
+  name: string;
+}
+
+interface Profile {
+  age: number;
+}
+
+interface Info extends Profile {
+  isJob: boolean;
+}
+
+const person: Info = {
+  name: 'Jason',
+  age: 33,
+  isJob: true,
+};
+```
+
+* 인터페이스는 같은 인터페이스에 property를 추가해줄 수 있고 <code>extends</code> 키워드를 통하여 확장할 수 있습니다.
+* <code>implements</code> 키워드를 통하여 인터페이스를 구현할 수도 있습니다.
+
+반면에 type alias는 어떨까요?
+
+``` ts
+type Job = string | boolean;
+
+type Profile = {
+  name: string;
+  age: number;
+}
+
+type Work = {
+  job: Job
+}
+
+type Info = (Profile & Work) | null;
+
+const person: Info = {
+  name: 'Jason',
+  age: 33,
+  job: true
+};
+```
+
+* **type alias**는 인터페이스와 달리 **Union Type**을 지정할 수도 있고 다른 type alias랑 결합해서 다른 이름을 지정할 수 있습니다.
+
+``` ts
+interface Profile {
+  name: string;
+  age: number;
+}
+
+interface Work {
+  job: string | boolean;
+}
+
+type Info = (Profile & Work) | null;
+
+const person: Info = {
+  name: 'Jason',
+  age: 33,
+  job: 'true'
+};
+```
+
+* 위와 같이 **interface**와 **type alias**를 혼용해서 사용할 수도 있습니다.
+
 ### # Generic
 
 **제네릭(Generic)**은 위에서 배운 타입 선언과 달리 미리 선언을 명시하지 않고 생성한 뒤에 타입이 정해집니다. 또한 타입도 여러가지 타입이 올 수 있습니다.
@@ -327,6 +400,30 @@ console.log(myAnswer('Generic'));  // Generic
 
 * 주석친 부분을 보시면 같은 함수인데 타입만 다를뿐 안에 구현되는 내용은 같습니다. 이럴때 좀 더 간편하게 쓸 수 있는 것이 **Generic**입니다. 선언 시점에 타입을 명시하는 것이 아니라 생성 시점, 즉 <code>test</code>함수가 실행되면서 타입이 string으로 정해집니다.
 
+``` ts
+class Person<T, U> {
+  name: T;
+  age: U;
+
+  constructor(name: T, age: U) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getName(): T {
+    return this.name;
+  }
+
+  getAge(): U {
+    return this.age;
+  }
+}
+
+const p = new Person<string, number>('Jaesung', 33);
+```
+
+* **Generic Class** 같은 경우 기본 구조는 위와 같습니다.
+
 ### Wrap-up
 
 지금까지 간략하게 **타입스크립트**의 특징에 대해서 알아보았습니다. 자바스크립트만 하다가 타입을 명시하면서 코딩을 하니까 몬가 어색했지만 프로젝트를 진행할 때 좀 더 안정적으로 개발할 수 있을것 같다는 생각이 들었습니다. 특히 인터페이스나 타입이 지정되어 있기 때문에 새로운 팀원이 투입될 시 빠르게 코드 분석을 할 수 있을 것 같습니다. 타입스크립트를 계속 관심만 가지고 지켜보다가 비로소 이번 포스팅으로 인해 첫걸음을 뗀 것 같습니다. 이번에 다루지 못하고 지나간 부분들은 다음 포스팅때 좀 더 공부해서 공유해보도록 하겠습니다.
@@ -335,3 +432,4 @@ console.log(myAnswer('Generic'));  // Generic
 
 [타입스크립트 공식 홈페이지](https://www.typescriptlang.org)
 [타입 선언과 정적 타이핑](http://poiemaweb.com/typescript-typing)
+[type과 interface 차이는 무엇인가?](https://stackoverflow.com/questions/36782896/in-typescript-what-is-the-difference-between-type-and-interface)
