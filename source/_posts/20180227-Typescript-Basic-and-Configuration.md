@@ -130,7 +130,7 @@ DEBUG CONSOLE에 <code>Debugging</code>이 출력됩니다.
 
 타입스크립트를 공부하다보니 에러가 중간중간 생기는 바람에 공부하는 흐름이 끊긴 적이 간혹 있었습니다. 아래는 문제해결 방법입니다.
 
-#### <code>cannot find name 'console'.</code> 해결 방법
+#### <code>cannot find name 'console'.</code>
 
 ``` shell
 $ yarn add --dev @types/node
