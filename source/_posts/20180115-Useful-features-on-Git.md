@@ -4,7 +4,7 @@ tags:
   - git
 thumbnail: ../../../../images/git/git-logo.png
 categories:
-  - Tool
+  - Ops
   - Git
 date: 2018-01-15 15:56:46
 ---
