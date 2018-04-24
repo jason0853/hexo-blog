@@ -31,7 +31,7 @@ $ docker --version
 
 ### Docker Command Line
 
-개인적으로 CLI를 선호하기 때문에 명령어를 자주 쓰는 명령어를 요약해보겠습니다. CLI보다 GUI Tool을 선호하시는 분은 [kitematic](https://kitematic.com/)을 추천드립니다.
+개인적으로 CLI를 선호하기 때문에 자주 쓰는 명령어를 요약해보겠습니다. CLI보다 GUI Tool을 선호하시는 분은 [kitematic](https://kitematic.com/)을 추천드립니다.
 
 ``` shell
 $ docker --help
