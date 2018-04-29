@@ -46,9 +46,24 @@ $ yarn start
     "baseUrl": "./src",
 //(중략...)
 ```
+``` json tslint.json
+{
+  "extends": ["tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  },
+  "rules": {
+      "jsx-no-lambda": false
+  }
+}
+```
 
 * 절대 경로로 파일을 불러올 수 있도록 **package.json**, **tsconfig.json**의 파일을 위와 같이 수정해줍니다.
 예) <code>import Person from components/Person</code>
+* tslint.json 파일 안에 <code>"tslint:recommended"</code>가 들어가 있다면 삭제하고 <code>"jsx-no-lambda" : false</code>로 설정을 추가해줍니다.
 
 ``` shell
 $ yarn start
@@ -97,7 +112,40 @@ src
 
 {% gist cfd3e945d261859457d82c7116d5a051 %}
 
-* CounterContainer(Smart Component)의 <code>state</code> 값과 함수들을 Count(Dumb Component)의 props로 전달해줍니다.
+* CounterContainer(Smart Component)의 <code>state</code> 값과 함수들을 Counter(Dumb Component)의 props로 전달해줍니다.
 * <code>interface</code>가 없는 경우엔 Generic 타입을 빈 객체로 지정해줍니다.
 예) <{}, State>
 
+### # Create Todo List
+
+Todo List를 한번 만들어 보면서 컴포넌트 최적화 및 여러가지 기능들을 구현해보겠습니다.
+
+``` plain
+// 폴더 구조
+src
+  - components
+    - Counter.tsx
+    - Person.tsx
+    - TodoForm.tsx
+    - TodoItem.tsx
+    - TodoList.tsx
+  - containers
+    - CounterContainer.tsx
+    - TodoContainer.tsx
+  App.tsx
+  index.css
+  index.tsx
+  registerServiceWorker.ts
+```
+
+{% gist 2ea857eeb604ad7bd9d67832453b6b9b %}
+
+* <code>TodoList</code>, <code>TodoItem</code>을 함수형 컴퍼넌트로 만들지 않은 이유는 **LifeCycle API**인 <code>shouldComponentUpdate(nextProps, nextState)</code>를 이용하여 컴퍼넌트 최적화를 해야하기 때문입니다. 만약 최적화 작업이 이루어지지 않는다면 Virtual Dom에서 필요없는 resource가 렌더링됩니다. 특히 <code>TodoItem</code>의 갯수가 기하급수적으로 늘어난다면 필요없는 자원들로 인해 결국 렌더링 속도가 느려질 것입니다.
+
+### Wrap-up
+
+{% githubCard user:jason0853 repo:react-redux-typescript-tutorial width:100% %}
+
+### Reference
+
+[TypeScript with React + Redux/Immutable.js 빠르게 배우기](https://velopert.com/3595)
