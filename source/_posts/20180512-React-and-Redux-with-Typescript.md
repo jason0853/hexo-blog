@@ -186,6 +186,8 @@ src
   * <code>action.payload!</code> - payload가 항상 있을 경우
   * <code>action.payload && do something</code> - aciton.payload가 참일 경우에만
 
+![](../../../../images/react/react-redux-typescript-tutorial.png)
+
 
 ### Wrap-up
 
