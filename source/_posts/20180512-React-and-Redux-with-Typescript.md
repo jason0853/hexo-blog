@@ -1,7 +1,10 @@
 ---
 title: React and Redux with Typescript
 tags:
-  - git
+  - React
+  - Redux
+  - Immer
+  - Typescript
 thumbnail: ../../../../images/react/react-logo.png
 categories:
   - Front-end
