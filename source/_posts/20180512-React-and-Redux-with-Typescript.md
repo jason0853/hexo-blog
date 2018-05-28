@@ -84,7 +84,7 @@ $ yarn start
 // 폴더 구조
 src
   - components
-    - Person.tsx
+    Person.tsx
   App.tsx
   index.css
   index.tsx
@@ -105,10 +105,10 @@ src
 // 폴더 구조
 src
   - components
-    - Counter.tsx
-    - Person.tsx
+    Counter.tsx
+    Person.tsx
   - containers
-    - CounterContainer.tsx
+    CounterContainer.tsx
   App.tsx
   index.css
   index.tsx
@@ -129,14 +129,14 @@ Todo List를 한번 만들어 보면서 컴포넌트 최적화 및 여러가지 
 // 폴더 구조
 src
   - components
-    - Counter.tsx
-    - Person.tsx
-    - TodoForm.tsx
-    - TodoItem.tsx
-    - TodoList.tsx
+    Counter.tsx
+    Person.tsx
+    TodoForm.tsx
+    TodoItem.tsx
+    TodoList.tsx
   - containers
-    - CounterContainer.tsx
-    - TodoContainer.tsx
+    CounterContainer.tsx
+    TodoContainer.tsx
   App.tsx
   index.css
   index.tsx
@@ -168,16 +168,16 @@ Combine Redux with Typescript 커밋 로그를 수정된 소스와 추가된 파
 src
   - store
     - models
-      - counter.ts
-      - index.ts
-      - todo.ts
+      counter.ts
+      index.ts
+      todo.ts
     - modules
-      - counter.ts
-      - index.ts
-      - todo.ts
-    - actionCreators.ts
-    - configure.ts
-    - index.ts
+      counter.ts
+      index.ts
+      todo.ts
+    actionCreators.ts
+    configure.ts
+    index.ts
 ```
 
 * 기존 src 폴더 안에 store 폴더를 추가한 다음 redux 관련 코드는 **modules** 폴더에 분류하고 state, action payload, action creator의 type definition을 **models** 폴더에 분류합니다.
