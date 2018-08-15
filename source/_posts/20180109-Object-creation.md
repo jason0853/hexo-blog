@@ -201,8 +201,8 @@ car.__proto__;  // { boost: true, name: "Ferrari" }
 car.prototype;  // undefined
 ```
 
-* 프로토타입을 설정할 객체 - <code>car</cpde>
-* 객체의 새로운 프로토타입 - <code>sportCar</cpde>
+* 프로토타입을 설정할 객체 - <code>car</code>
+* 객체의 새로운 프로토타입 - <code>sportCar</code>
 * **______proto______** 속성은 현재 객체가 프로토타입 체인에서 조회를 수행할 때 실제로 사용할 객체를 가리킵니다.
 
 ``` javascript
